@@ -1,0 +1,8 @@
+.vscode/
+.git/
+.DS_Store
+node_modules/
+package-lock.json
+package.json
+sftp.json
+.txt
