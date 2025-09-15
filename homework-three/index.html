@@ -1,0 +1,46 @@
+<!-- Set up simple html interest calculator, with input fields for principal, rate, and time in years that use js functions 
+ to calculate simple interest with a tiny bit of styling -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+</head>
+<body>
+    <h1>Simple Interest Calculator</h1>
+    <label for="principal">Principal:</label>
+    <input type="number" id="principal" required><br>
+
+    <label for="rate">Rate of Interest (%):</label>
+    <input type="number" id="rate" required><br>
+
+    <label for="time">Time (years):</label>
+    <input type="number" id="time" required><br>
+
+    <button onclick="calculateSimpleInterest()">Calculate</button>
+    <p id="result"></p>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    label {
+        display: inline-block;
+        width: 150px;
+        margin-top: 10px;
+    }
+    input {
+        margin-top: 10px;
+    }
+    button {
+        margin-top: 20px;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+<script src="functions.js"></script>
+</html>
