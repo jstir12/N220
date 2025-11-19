@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript: ADvanced Lists</title>
+    <style>
+        #codeBox {
+            border: 1px solid black;
+            background-color: rgb(230, 230, 230);
+            float: right;
+            width: 400px;
+            margin: 0 2rem;
+        }
+        
+        #codeBox::before {
+            content: "Code Box";
+            background-color: seaGreen;
+            display: block;
+            border-bottom: 1px solid black;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        #codeBox li {
+            background-color: mediumSeaGreen;
+            list-style-type: none;
+            border-top: 1px solid white;
+            border-bottom: 1px solid black;
+            padding: 8px 10px;
+            width: 80%;
+            position: relative;
+        }
+        
+        #addBtn {
+            background-color: white;
+            color: seaGreen;
+            padding: 5px 10px;
+            border: 1px solid seaGreen;
+            border-radius: 5px;
+            position: relative;
+            left: 40px;
+            margin-bottom: 20px;
+            box-shadow: 1px 1px 2px black;
+        }
+        
+        #addBtn:active {
+            box-shadow: 0 0 0 black;
+        }
+        
+        section div {
+            display: none;
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            padding: 10px;
+            background-image: linear-gradient( rgb(220, 220, 220) 60%, rgb(200, 200, 200));
+            border: 1px solid gray;
+            margin: 0;
+        }
+        
+        h2:hover {
+            cursor: pointer;
+        }
+        
+        img {
+            height: 100px;
+            float: left;
+            margin: 0 20px 20px 0;
+        }
+        
+        .listIcon {
+            height: 25px;
+            width: auto;
+            color: white;
+            position: absolute;
+            right: -15px;
+            top: 4px;
+        }
+        
+        code {
+            display: block;
+            background-color: rgb(230, 230, 230);
+            padding: 10px;
+            border: 1px solid gray;
+            margin: 20px 40px;
+        }
+        
+        .yourWork:before {
+            content: "INSTRUCTIONS: ";
+            font-weight: bold;
+        }
+        
+        .yourWork {
+            background-color: tomato;
+            padding: 10px;
+            font-style: italic;
+            margin: 30px 10px;
+        }
+        
+        .selected {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="codeBox">
+        <ul>
+            <li>Eggs</li>
+            <li>Milk</li>
+            <li>Bread</li>
+        </ul>
+        <input type="button" value="Add Item" id="addBtn" />
+    </div>
+    <main id="instructions">
+        <h1>Advanced List</h1>
+        <p>For this list, you will create a javascript list that will do the following:</p>
+        <ul>
+            <li>Add Items</li>
+            <li>Remove Items</li>
+            <li>Gray out selected items</li>
+        </ul>
+        <p>Most of the code has been done for you; A list and add item button has been created and the add item button is functional. Test it out.</p>
+        <p>You are now responsible for adding the code outlined in this tutorial. You will add an icon to each item and to each item added to the list.</p>
+        <p>Click on the gray headings below to reveal each step.</p>
+        <section>
+            <h2>Add Icon to Existing Items</h2>
+            <div>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/27019/trashcanIcon.png">
+                <p>I have added a trashcan icon to this page and you can grab the exact location by looking in the HTML section of this page. We already have items in our list and each item in our list needs this icon. So it's your job to add it to the existing
+                    items. But how do you do that?</p>
+                <p>Well, we have learned in class that when we have to do the same thing multiple times, we can use loops; that's what they do - its their function in javascript. So, let's use a loop - more specifically a <i>for loop</i>.</p>
+                <p>There are three parts of a for loop that we need: a starting point, an ending point, and how it will interate through the loop. Let's disect this:</p>
+                <p>We know that we need to loop through the items currently in the list. So, how do we get them items? Well, we need to create an array of sorts to loop through. So, we can use DOM elements to get an array -> more specifically a node list:</p>
+                <code> document.querySelectorAll('codeList li');</code>
+                <p class="yourWork">Set the above code as the value of a variable.</p>
+                <p>This will create a nodelist (think array) of all the list items in the the codeList ul element. Now we can loop through this list. But first you need to get the length of the nodeList.</p>
+                <p class="yourWork">Create another variable equal to the length of your previous variable. Example: var totalItems = myItems.length;</p>
+                <p>Now create the for loop code:<br/>The first part is to create your starting point. Developers usually use <i>i</i>, but you can use any letter or even a word. <i>I</i> is just short for iterator, which is what this variable does. So step
+                    one: create a variable equal to 0.</p>
+                <p>The next step is to set the end point. you want it to loop through the node list length (which you have set to a variable), until it reaches the end. So step two: make the loop continue while your variable is less than the length of your
+                    nodelist.
+                </p>
+                <p>NOTE: don't forget to separate each step with a semicolon!</p>
+                <p>Now step three: increase by one each time it goes through the loop.</p>
+                <p>Now the loop guts - what we want it to do for every list item. Here are the steps we need to complete:</p>
+                <ol>
+                    <li>Create an img element</li>
+                    <li>Give the img element an attribute of "src" that is equal to the image address/location</li>
+                    <li>Add a class name of <i>listIcon</i> to the image.</li>
+                    <li>Add the image to the list item</li>
+                </ol>
+                <p class="yourWork">Create a variable that will create an image element.<br/> Using that variable, use <i>setAttribute</i> to give it a attribute of src that has the value of the image location.<br/> Using that variable again, give it a class name of <i>listIcon</i>.<br/>                    Now append the image element to each list item in the nodelist by using <i>listItems[i]</i></p>
+                <p>You should now see the trash can icons on the right-side of each list item.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Add Icons to New Items</h2>
+            <div>
+                <p>Now you need to add the trash icon to new items. This is simple; you will just copy the code that added the image to the <i>addItem</i> function with just one modification!</p>
+                <p class="yourWork">Copy the code that you used to add the trashcan icon to the existing list items to the addItem function.<br/>Modify the line of code that adds the icon to the list item by changing the targeted element:</p>
+                <code>newLI.appendChild(trashIcon);</code></div>
+        </section>
+        <section>
+            <h2>Trash or Gray Out Items</h2>
+            <div>
+                <p>We are going to make two changes possible: change the color of the list item or remove it completely. Since we just added the trashcan icon, let's write the function for that. (You already know the code for this anyway.)</p>
+                <p>We know we need to target the images, so add an event listener to the list, just like we did before:</p>
+                <p class="yourWork">Add an event listener to the codeBox ul. (You should already have this set to a variable.) This should call a function called changeProp and the event flow should be set to FALSE.</p>
+                <p>Now write the function. Since we need to listen for an event to find the target, remember to but the <i>e</i> variable as a parameter:</p>
+                <code>function changeProp(e) {}</code>
+                <p>Inside the function, create a variable that will call the getTarget function with the parameter of <i>e</i>. This will hold the target of the event.</p>
+                <p>Since our target area is our unordered list, the target could be either the list item or the image. To find that out, we are going to figure out what is the <i>parent</i> of our target.</p>
+                <p class="yourWork">Create a variable that will be set to the parentNode of the target element. (Call it <i>tParent</i>)</p>
+                <p>Now we will just use a simple if/else statement to finish out functionality. If the parent of the target is a list item (LI), then we will remove the list item from the list. But if the parent of the target is the unordered list, we are
+                    simply going to add the class name <i>selected</i> to the list item.</p>
+                <p class="yourWork">Create the if/else if statement. REMEMBER: use a double equal sign to check values!</p>
+                <p>There you have it! It's fully functional now. How awesome is that??</p>
+            </div>
+        </section>
+        <section>
+            <h2>Reinstate Item</h2>
+            <div>
+                <p>Write the code that will check to see if the list item is grayed out. If so, it will return it back to normal. If not, it will be grayed out. This should ONLY happen if they click on the LIST ITEM and NOT the trashcan
+                    icon.
+                </p>
+
+                <script type="text/javascript">
+                    function getTarget(e) {
+                        if (!e) {
+                            e = window.event;
+                        }
+                        return e.target || e.srcElement;
+                    }
+
+                    var viewInfo = document.querySelector('main');
+                    viewInfo.addEventListener('click', displayInfo, false);
+
+                    function displayInfo(e) {
+                        var target = getTarget(e);
+                        if (target.tagName == "H2") {
+                            var tParent = target.parentNode;
+                            var parentDiv = tParent.children;
+                            console.log(parentDiv[1]);
+                            if (parentDiv[1].style.display == "none") {
+                                parentDiv[1].style.display = "block";
+                            } else {
+                                parentDiv[1].style.display = "none";
+                            }
+                        }
+                    }
+
+                    var myList = document.querySelector("#codeBox ul");
+                    var addBtn = document.getElementsByTagName('input')[0];
+
+                    addBtn.addEventListener('click', addItem, false);
+
+                    function addItem() {
+                        var newItem = prompt("New Item:");
+                        var newLI = document.createElement('li');
+                        var newLIText = document.createTextNode(newItem);
+                        newLI.appendChild(newLIText);
+                        myList.appendChild(newLI);
+                        const newImage = document.createElement('img');
+                        newImage.setAttribute('src', "https://s3-us-west-2.amazonaws.com/s.cdpn.io/27019/trashcanIcon.png")
+                        newImage.setAttribute('class', 'listIcon');
+                        newLI.append(newImage);
+                    }
+                </script>
+            <script type="text/javascript" src="advList.js"></script>
+</body>
+
+</html>
