@@ -21,3 +21,5 @@ The responses come back as JSON and I loop through them to update the page.
 Notes for the Grader:
 My project uses DOM manipulation, event handling, async fetch with JSON, user input (movie search), and a JS-based motion effect on the cards. 
 Everything updates dynamically without reloading the page.
+
+Github Pages Link: https://jstir12.github.io/N220/FinalProject/movies.html
