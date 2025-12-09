@@ -113,8 +113,7 @@ searchMoviesBtn.addEventListener('click', async () => {
 
     // If no movies found, show a message
     if (movies.length === 0) {
-        moviesDiv.innerHTML = '<p>No results found Please try a different search.</p>';
-        moviesDiv.style.display = 'block';
+        window.alert('No results found. Please try a different search.');
         loadMoreBtn.classList.add('hide');
         return;
     }
