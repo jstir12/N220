@@ -147,12 +147,18 @@ button:hover {
     margin-bottom: 50px;
 }
 
-.load-more-btn.hide {
+.load-more-btn.hide,
+.resort-btn.hide {
     display: none;
 }
 
-.load-more-btn.show {
+.load-more-btn.show,
+.resort-btn.show {
     display: block;
+}
+
+.resort-btn {
+    margin-left: 40px;
 }
 
 /* Responsive Design */

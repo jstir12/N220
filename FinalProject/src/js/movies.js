@@ -5,6 +5,7 @@ const upcomingBtn = document.querySelector('#getUpcomingMoviesBtn');
 const singleMovie = document.querySelector('#movieSearchInput');
 const searchMoviesBtn = document.querySelector('#searchMoviesBtn');
 const loadMoreBtn = document.querySelector('#loadMoreBtn');
+const resortBtn = document.querySelector('#resortBtn');
 const moviesDiv = document.querySelector('#moviesList');
 
 // Define Global Variables
@@ -24,6 +25,7 @@ function getPageLimit(totalResults) {
 
 // Fetch movies from a given endpoint
 async function fetchMovies(endpoint) {
+    resortBtn.classList.add('hide');
     const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US&page=${pageNumber}`);
     const data = await response.json();
     getPageLimit(data);
@@ -44,7 +46,7 @@ async function fetchUpcomingMovies() {
 
     // Fetch upcoming movies with filters
     const response = await fetch(
-        `${BASE_URL}/movie/upcoming?` +
+        `${BASE_URL}/discover/movie?` +
         `api_key=${API_KEY}` +
         `&language=en-US` +
         `&page=${pageNumber}` +
@@ -66,6 +68,8 @@ async function fetchUpcomingMovies() {
 }
 
 async function fecthSearchResults(query) {
+    // Hide resort button during search
+    resortBtn.classList.add('hide');
     // Send movie search request
     const response = await fetch(
         `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${pageNumber}&include_adult=false&sort_by=popularity.desc`
@@ -134,6 +138,8 @@ loadMoreBtn.addEventListener('click', async () => {
         moreMovies = await fetchMovies('/movie/popular');
     } else if (selectedQuery === 'upcoming') {
         moreMovies = await fetchUpcomingMovies();
+        moreMovies.sort((a, b) => a.release_date.localeCompare(b.release_date));
+        resortBtn.classList.remove('hide');
     } else if (selectedQuery === 'search') {
         const query = singleMovie.value;
         moreMovies = await fecthSearchResults(query);
@@ -142,6 +148,18 @@ loadMoreBtn.addEventListener('click', async () => {
     // now display the new movies
     movies = movies.concat(moreMovies);
     displayMovies(true);
+});
+
+// Resort upcoming movies by release date
+resortBtn.addEventListener('click', () => {
+    // Resort only if the current selection is upcoming movies
+    if (selectedQuery === 'upcoming') {
+        movies.sort((a, b) => a.release_date.localeCompare(b.release_date));
+        displayMovies();
+        resortBtn.classList.add('hide');
+        // Scroll to top of movie list
+        moviesDiv.scrollIntoView({ behavior: 'smooth' });
+    }
 });
 
 // Display movies on the page with a fade-in animation
