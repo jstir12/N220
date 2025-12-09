@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List Generator</title>
+    <link rel="stylesheet" href="src/css/movies.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie List Generator</h1>
+        <div class="button-container">
+            <button id="getTopRatedMoviesBtn">Get Top Rated Movies</button>
+            <button id="getPopularMoviesBtn">Get Current Most Popular Movies</button>
+            <button id="getUpcomingMoviesBtn">Get Upcoming Movies</button>
+            <!--search for movies-->
+            <div class="search-container">
+                <input type="text" id="movieSearchInput" placeholder="Search for a movie...">
+                <button id="searchMoviesBtn">Search For Movie</button>
+            </div>
+        </div>
+        <div id="moviesList" class="movies-list"></div>
+        <div class="load-more-container">
+            <button id="loadMoreBtn" class="load-more-btn hide">Load More</button>
+        </div>
+    </div>
+</body>
+<script src="src/js/movies.js"></script>
+</html>

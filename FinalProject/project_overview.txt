@@ -1,0 +1,23 @@
+Project Title: Movie List Generator
+
+Project Concept:
+My project is a simple movie explorer that lets users load top rated movies, popular movies, upcoming releases, and also search for any movie by name. 
+When the user clicks a button or searches, the page updates with new movie cards that show the poster, title, rating, release date, and a short overview.
+
+Why I Chose This Theme:
+I picked movies because the API is easy to work with, and it makes the project more fun and visual. 
+It also gives me a good way to show dynamic UI changes and API calls without making the project overly complicated.
+
+Interactive Features:
+The site updates every time the user clicks a button or searches for a movie. 
+All movie cards are created through JavaScript, and they fade in with a small JS animation. 
+Hover effects also help make the cards feel more interactive.
+
+Async Operation:
+I used the TMDb API and fetch it with async/await. 
+I make requests for top rated movies, popular movies, upcoming movies, and movie search. 
+The responses come back as JSON and I loop through them to update the page.
+
+Notes for the Grader:
+My project uses DOM manipulation, event handling, async fetch with JSON, user input (movie search), and a JS-based motion effect on the cards. 
+Everything updates dynamically without reloading the page.
