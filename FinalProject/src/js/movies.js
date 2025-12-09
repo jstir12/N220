@@ -114,6 +114,8 @@ searchMoviesBtn.addEventListener('click', async () => {
     // If no movies found, show a message
     if (movies.length === 0) {
         moviesDiv.innerHTML = '<p>No results found Please try a different search.</p>';
+        moviesDiv.style.display = 'block';
+        loadMoreBtn.classList.add('hide');
         return;
     }
 
